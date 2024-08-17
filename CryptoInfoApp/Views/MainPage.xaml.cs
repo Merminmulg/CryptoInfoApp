@@ -1,5 +1,9 @@
-﻿using CryptoInfoApp.ApiServices;
+﻿using CryptoInfoApp.ModelViews;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,17 +14,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoInfoApp
+namespace CryptoInfoApp.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        private ApiService apiService;
-        public MainWindow()
+        public MainPage()
         {
-            apiService = new ApiService();
+            DataContext = new MainPageVM();
             InitializeComponent();
         }
     }

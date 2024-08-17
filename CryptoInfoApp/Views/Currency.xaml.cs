@@ -1,5 +1,8 @@
-﻿using CryptoInfoApp.ApiServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,17 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptoInfoApp
+namespace CryptoInfoApp.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для Currency.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Currency : Page
     {
-        private ApiService apiService;
-        public MainWindow()
+        public Currency()
         {
-            apiService = new ApiService();
             InitializeComponent();
         }
     }
