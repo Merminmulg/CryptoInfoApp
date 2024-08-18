@@ -1,0 +1,151 @@
+﻿<Page x:Class="CryptoInfoApp.Views.CurrencyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CryptoInfoApp.Views"
+      xmlns:mv="clr-namespace:CryptoInfoApp.ModelViews"
+      mc:Ignorable="d" 
+      d:DataContext="{d:DesignInstance Type=mv:CurrencyViewModel}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CurrencyPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/SmallButton.xaml"/>
+                <ResourceDictionary Source="../Styles/ViewListStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid Background="#FF101015">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}" Content="BACK" FontSize="20" Width="80" Background="#FF41355D"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Background="#FF101015" TextBlock.FontSize="20" TextBlock.Foreground="#FFD0CECE" TextBlock.FontFamily="Bahnschrift Condensed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Currency.Image}" Margin="10" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="90"/>
+
+
+                    <TextBlock Text="{Binding Currency.Name}" Margin="5" FontSize="24" TextWrapping="Wrap" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding Currency.CurrencySymbol}" Margin="10 0 0 0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+                    <WrapPanel Grid.Column="3" Margin="0 10 0 0">
+                        <TextBlock Text="Price: " VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Currency.CurrentPrice, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Column="4" Grid.Row="0" Margin="10 10 0 0">
+                        <TextBlock Text="Market Cap Rank : " Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Currency.MarketCapRank}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Column="4" Grid.Row="1" Margin="10 10 0 0">
+                        <TextBlock Text="Market Cap : " Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Currency.MarketCap, StringFormat=N2}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </WrapPanel>
+
+                    <WrapPanel Grid.Column="5" Margin="20 10 0 0" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Currency.PriceChange24h, StringFormat=N3}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </WrapPanel>
+                    <WrapPanel Grid.Column="5" Grid.Row="1" Margin="20 10 0 0" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Currency.PriceChangePercantage24h, StringFormat=N3}" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="%" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <ListView ItemsSource="{Binding CriptoExchanges}" ScrollViewer.CanContentScroll="True"
+                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                              Height="660" Background="#FF17171F" TextBlock.Foreground="#FFD0CECE" 
+                              TextBlock.FontFamily="Bahnschrift Condensed" BorderBrush="#FF06080C"
+                              Style="{StaticResource BaseViewList}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="1200">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="160"/>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding MarketLogo}" Width="60" Height="60" Grid.RowSpan="3" HorizontalAlignment="Center"/>
+                                    <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding MarketName}"/>
+                                    <TextBlock Foreground="{Binding TrustedScore}" Grid.Column="1" Grid.Row="2" Text="Trust"/>
+                                    <WrapPanel Grid.Column="2" Grid.Row="2">
+                                        <TextBlock Text="{Binding BaseC}"/>
+                                        <TextBlock Text=" x "/>
+                                        <TextBlock Text="{Binding TargetC}"/>
+                                    </WrapPanel>
+                                    <WrapPanel VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2">
+                                        <TextBlock Text="Last: "/>
+                                        <TextBlock Text="{Binding LastPrice}"/>
+                                    </WrapPanel>
+
+                                    <WrapPanel VerticalAlignment="Bottom" Margin="10 0" Grid.Row="0" Grid.Column="3">
+                                        <TextBlock Text="Last BTC: "/>
+                                        <TextBlock Text="{Binding LastPriceBtc, StringFormat=N6}"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="10 0" Grid.Row="1" Grid.Column="3">
+                                        <TextBlock Text="Last ETH: "/>
+                                        <TextBlock Text="{Binding LastPriceEth, StringFormat=N4}"/>
+                                    </WrapPanel>
+                                    <WrapPanel Margin="10 0" Grid.Row="2" Grid.Column="3">
+                                        <TextBlock Text="Last USD: "/>
+                                        <TextBlock Text="{Binding LastPriceUsd, StringFormat=N3}"/>
+                                    </WrapPanel>
+                                    <WrapPanel Grid.Column="4">
+                                        <TextBlock Text="Volume: "/>
+                                        <TextBlock Text="{Binding Volume}"/>
+                                    </WrapPanel>
+                                    
+                                    <!--Button redirect to exchange website-->
+                                    <Button 
+                                        Command="{Binding DataContext.OpenExchangeWebCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                        CommandParameter="{Binding TradeUrl}"
+                                        Style="{StaticResource SmallButton}"
+                                        Content="Trade" Grid.Column="6" Grid.RowSpan="3"
+                                        Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
+                                        FontSize="20" Background="#FF41355D"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

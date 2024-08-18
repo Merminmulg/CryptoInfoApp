@@ -21,9 +21,9 @@ namespace CryptoInfoApp.Views
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        public MainPage(ICommand navigationCommand)
         {
-            DataContext = new MainPageVM();
+            DataContext = new MainPageViewModel(navigationCommand);
             InitializeComponent();
         }
     }

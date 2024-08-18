@@ -11,11 +11,21 @@
                         <ScrollViewer x:Name="PART_ScrollViewer" 
                                   Padding="{TemplateBinding Padding}"
                                   VerticalScrollBarVisibility="Hidden" 
-                                  HorizontalScrollBarVisibility="Disabled">
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  CanContentScroll="False">
                             <ItemsPresenter/>
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="Padding" Value="0 10"/>
+                </Style>
             </Setter.Value>
         </Setter>
     </Style>

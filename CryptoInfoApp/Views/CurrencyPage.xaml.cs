@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CryptoInfoApp.Models;
+using CryptoInfoApp.ModelViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +20,11 @@ namespace CryptoInfoApp.Views
     /// <summary>
     /// Логика взаимодействия для Currency.xaml
     /// </summary>
-    public partial class Currency : Page
+    public partial class CurrencyPage : Page
     {
-        public Currency()
+        public CurrencyPage(CriptoCurrency currency, ICommand navigationCommand)
         {
+            DataContext = new CurrencyViewModel(currency, navigationCommand);
             InitializeComponent();
         }
     }

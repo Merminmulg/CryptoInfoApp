@@ -1,4 +1,6 @@
 ﻿using CryptoInfoApp.ApiServices;
+using CryptoInfoApp.ModelViews;
+using CryptoInfoApp.Views;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,10 +19,9 @@ namespace CryptoInfoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ApiService apiService;
         public MainWindow()
         {
-            apiService = new ApiService();
+            DataContext = new MainViewModel();
             InitializeComponent();
         }
     }
