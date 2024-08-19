@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush Color="#CCDBE3" x:Key="comboBoxColor"/>
+    <SolidColorBrush Color="#1A1A1A" x:Key="textForeground"/>
+    <SolidColorBrush Color="#D8E7F0" x:Key="mainBackground"/>
+    <SolidColorBrush Color="#B8CBD4" x:Key="buttonBackground"/>
+    <SolidColorBrush Color="#E6F5FF" x:Key="viewBackground" />
+    <SolidColorBrush Color="#DAE9F2" x:Key="ioField"/>
+    <SolidColorBrush Color="#1A1A1A" x:Key="themeButtonBackground"/>
+</ResourceDictionary>

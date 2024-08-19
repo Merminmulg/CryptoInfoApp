@@ -19,15 +19,18 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#FF101015">
+    <Grid Background="{DynamicResource viewBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" FontSize="20" Width="80" Background="#FF41355D"/>
+            <Button Style="{StaticResource SmallButton}" 
+                    Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" 
+                    FontSize="20" Width="80" Background="{DynamicResource buttonBackground}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Background="#FF101015" TextBlock.FontSize="20" TextBlock.Foreground="#FFD0CECE" TextBlock.FontFamily="Bahnschrift Condensed">
+        <StackPanel Grid.Row="1" TextBlock.FontSize="20" 
+                    TextBlock.Foreground="{DynamicResource textForeground}" TextBlock.FontFamily="Bahnschrift Condensed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -84,9 +87,9 @@
                 <Grid Grid.Row="1">
                     <ListView ItemsSource="{Binding CryptoExchanges}" ScrollViewer.CanContentScroll="True"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                              Height="660" Background="#FF17171F" TextBlock.Foreground="#FFD0CECE" 
-                              TextBlock.FontFamily="Bahnschrift Condensed" BorderBrush="#FF06080C"
-                              Style="{StaticResource BaseViewList}">
+                              Height="660" Background="{DynamicResource mainBackground}" TextBlock.Foreground="{DynamicResource textForeground}" 
+                              TextBlock.FontFamily="Bahnschrift Condensed"
+                              Style="{StaticResource BaseViewList}" BorderThickness="0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Width="1200">
@@ -141,7 +144,7 @@
                                         Style="{StaticResource SmallButton}"
                                         Content="{DynamicResource b_buy}" Grid.Column="6" Grid.RowSpan="3"
                                         Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
-                                        FontSize="20" Background="#FF41355D"/>
+                                        FontSize="20" Background="{DynamicResource buttonBackground}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

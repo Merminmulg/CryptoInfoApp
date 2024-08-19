@@ -78,9 +78,10 @@ namespace CryptoInfoApp.ModelViews
             AppResourcesController.ChangeLanguage(SelectedLanguage);
         }
 
+        [RelayCommand]
         public void ChangeTheme()
         {
-
+            AppResourcesController.ChangeTheme();
         }
     }
 }

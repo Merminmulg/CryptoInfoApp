@@ -20,52 +20,56 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="#FF17171F">
+    <Grid Background="{DynamicResource mainBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="140"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/exitIcon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30"/>-->
-        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"> 
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
             <Button Command="{Binding RefreshChartCommand}" Style="{StaticResource SmallButton}" 
-                    Background="#FF41355D" Content="{DynamicResource b_update}" 
+                    Background="{DynamicResource buttonBackground}" Content="{DynamicResource b_update}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
                     Width="200"/>
             <Button Command="{Binding NavigateToConverterCommand}" CommandParameter="{Binding Currencies}"
                     Style="{StaticResource SmallButton}" 
-                    Background="#FF41355D" Content="{DynamicResource b_converter}" 
+                    Background="{DynamicResource buttonBackground}" Content="{DynamicResource b_converter}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
                     Width="Auto"/>
-            <TextBox Text="{Binding CurrencyFilter}" FontSize="26" FontFamily="Bahnschrift Condensed" VerticalContentAlignment="Center" Width="260" Height="40"/>
+            <TextBox Text="{Binding CurrencyFilter}" Background="{DynamicResource viewBackground}" 
+                     Foreground="{DynamicResource textForeground}" FontSize="26" FontFamily="Bahnschrift Condensed" 
+                     VerticalContentAlignment="Center" Width="260" Height="40"/>
             <ComboBox ItemsSource="{Binding Languages}" 
                       SelectedItem="{Binding SelectedLanguage}"
                       Width="50" Height="50" Margin="20 0" 
-                      Background="#FF151515" BorderThickness="0">
+                      Background="{DynamicResource comboBoxColor}" BorderThickness="0">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center" FontSize="14" Foreground="#FFB8B8B9"/>
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" FontSize="14" Foreground="{DynamicResource textForeground}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Button Width="50" Height="50" BorderThickness="0" 
+                    Background="{DynamicResource themeButtonBackground}"
+                    Command="{Binding ChangeThemeCommand}">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="50"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </WrapPanel>
-        <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/backArrow.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30"/>-->
-        <!--<ComboBox 
-            ItemsSource="{Binding Exchanges}" DisplayMemberPath="Value" 
-            Grid.Row="1" Width="300" Height="40" 
-            Background="#FF151414" BorderBrush="#FF151515" Foreground="#FFBBBBBB"
-            SelectedItem="{Binding SelectedExchange}"/>-->
-        <TextBlock FontFamily="Bahnschrift Condensed" FontSize="20" Text="Source: CoinGecko" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Foreground="#FFD0CECE"/>
+        <TextBlock FontFamily="Bahnschrift Condensed" FontSize="20" Text="Source: CoinGecko" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Foreground="{DynamicResource textForeground}"/>
 
         <ListView Style="{StaticResource BaseViewList}" ScrollViewer.CanContentScroll="True"
                   ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                   Padding="0" BorderThickness="2" Grid.Row="2" 
                   ItemsSource="{Binding Currencies}" 
                   HorizontalAlignment="Center"
-                  VerticalAlignment="Center" Background="#FF101015" 
+                  VerticalAlignment="Center" Background="{DynamicResource viewBackground}" 
                   FontSize="20" FontFamily="Bahnschrift Condensed" 
-                  Height="720" Width="900" Foreground="#FFD0CECE">
+                  Height="720" Width="900" Foreground="{DynamicResource textForeground}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -108,12 +112,12 @@
 
                         
                         <WrapPanel Grid.Column="5" Margin="0 10 0 0">
-                            <Label Content="{DynamicResource m_change24h}" Foreground="#FFD0CECE"/>
+                            <Label Content="{DynamicResource m_change24h}" Foreground="{DynamicResource textForeground}"/>
                             <TextBlock Text="{Binding PriceChange24h, StringFormat=N3}" VerticalAlignment="Center"/>
                             <TextBlock Text="$" VerticalAlignment="Center"/>
                         </WrapPanel>
                         <WrapPanel Grid.Column="5" Grid.Row="1" Margin="0 10 0 0">
-                            <Label Content="{DynamicResource m_change24h}" Foreground="#FFD0CECE"/>
+                            <Label Content="{DynamicResource m_change24h}" Foreground="{DynamicResource textForeground}"/>
                             <TextBlock Text="{Binding PriceChangePercantage24h, StringFormat=N3}" VerticalAlignment="Center"/>
                             <TextBlock Text="%" VerticalAlignment="Center"/>
                         </WrapPanel>
@@ -122,7 +126,7 @@
                                 Style="{StaticResource SmallButton}"
                                 Grid.Column="6" Grid.RowSpan="2" Content="i" 
                                 HorizontalAlignment="Right" VerticalAlignment="Center" 
-                                Background="#FF41355D">
+                                Background="{DynamicResource buttonBackground}">
                         </Button>
                     </Grid>
                 </DataTemplate>

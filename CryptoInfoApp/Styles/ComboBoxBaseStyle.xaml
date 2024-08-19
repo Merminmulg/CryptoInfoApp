@@ -42,7 +42,7 @@
                 MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                 <Border 
                     Name="DropDownBorder"
-                    Background="{DynamicResource ComboBoxDropdownBackground}"
+                    Background="{DynamicResource comboBoxColor}"
                     BorderBrush="{DynamicResource ComboBoxBorderBrush}"
                     BorderThickness="1" />
                                 <ScrollViewer Margin="4,6,4,6" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
