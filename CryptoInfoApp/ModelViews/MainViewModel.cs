@@ -4,6 +4,7 @@ using CryptoInfoApp.Models;
 using CryptoInfoApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,18 +20,26 @@ namespace CryptoInfoApp.ModelViews
         [ObservableProperty]
         private Page? _currentPage;
 
+
         public bool CanGoBack() => _navigationStack.Count > 0;
 
         public MainViewModel()
         {
-            CurrentPage = new MainPage(NavigateToCurrencyCommand);
+            CurrentPage = new MainPage(NavigateToCurrencyCommand, NavigateToConverterCommand);
         }
 
         [RelayCommand]
-        private void NavigateToCurrency(CriptoCurrency selectedCurrency)
+        private void NavigateToCurrency(CryptoCurrency selectedCurrency)
         {
             _navigationStack.Push(CurrentPage);
             CurrentPage = new CurrencyPage(selectedCurrency, GoBackCommand);
+        }
+
+        [RelayCommand]
+        private void NavigateToConverter(ObservableCollection<CryptoCurrency> currencies)
+        {
+            _navigationStack.Push(CurrentPage);
+            CurrentPage = new ConverterPage(currencies, GoBackCommand);
         }
 
         [RelayCommand(CanExecute = nameof(CanGoBack))]

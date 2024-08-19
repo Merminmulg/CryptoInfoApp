@@ -19,15 +19,15 @@ namespace CryptoInfoApp.ModelViews
     internal partial class CurrencyViewModel : ObservableObject
     {
         [ObservableProperty]
-        private CriptoCurrency _currency;
+        private CryptoCurrency _currency;
 
         [ObservableProperty]
-        private ObservableCollection<ExchangeCriptoCurrency> _criptoExchanges;
+        private ObservableCollection<ExchangeCryptoCurrency> _cryptoExchanges;
 
         private readonly ApiService apiService = new();
 
         public ICommand GoBackCommand { get; }
-        public CurrencyViewModel(CriptoCurrency currency, ICommand goBack)
+        public CurrencyViewModel(CryptoCurrency currency, ICommand goBack)
         {
             Currency = currency;
             GoBackCommand = goBack;
@@ -36,7 +36,7 @@ namespace CryptoInfoApp.ModelViews
 
         private async void DataInit(string currencyId)
         {
-            CriptoExchanges = new ObservableCollection<ExchangeCriptoCurrency>(
+            CryptoExchanges = new ObservableCollection<ExchangeCryptoCurrency>(
                 (await apiService.GetExchangesByCurrency(currencyId))
                 .OrderBy(x => x.BaseC)
                 .ThenBy(x => x.TargetC));

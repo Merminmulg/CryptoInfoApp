@@ -1,4 +1,4 @@
-﻿using CryptoInfoApp.ModelViews;
+﻿using CryptoInfoApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CryptoInfoApp.ModelViews;
+using System.Collections.ObjectModel;
 
 namespace CryptoInfoApp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для ConverterPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ConverterPage : Page
     {
-        public MainPage(ICommand navigationCurrencyCommand, ICommand navigationConverterCommand)
+        public ConverterPage(ObservableCollection<CryptoCurrency> currencies, ICommand command)
         {
-            DataContext = new MainPageViewModel(navigationCurrencyCommand, navigationConverterCommand);
+            DataContext = new ConverterViewModel(currencies.ToList(), command);
             InitializeComponent();
         }
     }

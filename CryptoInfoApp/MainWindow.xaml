@@ -8,7 +8,7 @@
         xmlns:mv="clr-namespace:CryptoInfoApp.ModelViews"
         WindowStyle="SingleBorderWindow"
         d:DataContext="{d:DesignInstance Type=mv:MainViewModel}"
-        Title="Crypto Glass" Height="900" Width="1280">
+        Title="Crypto Glass" Height="940" Width="1280">
 
     <Grid>
         <Frame Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>

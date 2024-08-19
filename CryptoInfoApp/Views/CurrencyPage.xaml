@@ -80,7 +80,7 @@
                     </WrapPanel>
                 </Grid>
                 <Grid Grid.Row="1">
-                    <ListView ItemsSource="{Binding CriptoExchanges}" ScrollViewer.CanContentScroll="True"
+                    <ListView ItemsSource="{Binding CryptoExchanges}" ScrollViewer.CanContentScroll="True"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               Height="660" Background="#FF17171F" TextBlock.Foreground="#FFD0CECE" 
                               TextBlock.FontFamily="Bahnschrift Condensed" BorderBrush="#FF06080C"

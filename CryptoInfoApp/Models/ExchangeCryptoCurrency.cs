@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoInfoApp.Models
 {
-    internal class ExchangeCriptoCurrency
+    internal class ExchangeCryptoCurrency
     {
         public string BaseC { get; set; }
         public string TargetC { get; set; }

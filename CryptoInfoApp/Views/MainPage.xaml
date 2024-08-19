@@ -21,17 +21,30 @@
 
     <Grid Background="#FF17171F">
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="140"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/exitIcon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30"/>-->
-        <Button Command="{Binding RefreshChartCommand}" Style="{StaticResource SmallButton}" Background="#FF41355D" Content="U" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30"/>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"> 
+            <Button Command="{Binding RefreshChartCommand}" Style="{StaticResource SmallButton}" 
+                    Background="#FF41355D" Content="Update" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
+                    Width="200"/>
+            <Button Command="{Binding NavigateToConverterCommand}" CommandParameter="{Binding Currencies}"
+                    Style="{StaticResource SmallButton}" 
+                    Background="#FF41355D" Content="Converter" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
+                    Width="200"/>
+            <TextBox Text="{Binding CurrencyFilter}" FontSize="26" FontFamily="Bahnschrift Condensed" VerticalContentAlignment="Center" Width="260" Height="40"/>
+        </WrapPanel>
         <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/backArrow.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30"/>-->
         <!--<ComboBox 
             ItemsSource="{Binding Exchanges}" DisplayMemberPath="Value" 
             Grid.Row="1" Width="300" Height="40" 
             Background="#FF151414" BorderBrush="#FF151515" Foreground="#FFBBBBBB"
             SelectedItem="{Binding SelectedExchange}"/>-->
+        <TextBlock FontFamily="Bahnschrift Condensed" FontSize="20" Text="Source: CoinGecko" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10" Foreground="#FFD0CECE"/>
+
         <ListView Style="{StaticResource BaseViewList}" ScrollViewer.CanContentScroll="True"
                   ScrollViewer.VerticalScrollBarVisibility="Hidden" 
                   Padding="0" BorderThickness="2" Grid.Row="2" 
@@ -49,8 +62,8 @@
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="130"/>
                             <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

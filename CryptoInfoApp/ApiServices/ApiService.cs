@@ -16,14 +16,14 @@ namespace CryptoInfoApp.ApiServices
     {
         private readonly HttpClient client = new HttpClient();
 
-        public async Task<List<CriptoCurrency>> GetTopCurrenciesAsync(string locale = "en", string vsCurrency = "usd")
+        public async Task<List<CryptoCurrency>> GetTopCurrenciesAsync(string locale = "en", string vsCurrency = "usd")
         {
             var topCurrenciesJson = await client.GetStringAsync("https://api.coingecko.com/api/v3/coins/markets?vs_currency="+vsCurrency+"&x_cg_demo_api_key=CG-cEKtviV8hwps7SJHcnRMHSgD&locale="+locale);
-            List<CriptoCurrency> currencies = new List<CriptoCurrency>();
+            List<CryptoCurrency> currencies = new List<CryptoCurrency>();
             JArray currenciesJArray = JArray.Parse(topCurrenciesJson);
             foreach (var item in currenciesJArray)
             {
-                CriptoCurrency curCurrency = new CriptoCurrency();
+                CryptoCurrency curCurrency = new CryptoCurrency();
                 curCurrency.Id = item["id"].ToString();
                 curCurrency.CurrencySymbol = item["symbol"].ToString();
                 curCurrency.Name = item["name"].ToString();
@@ -41,15 +41,15 @@ namespace CryptoInfoApp.ApiServices
             return currencies;
         }
 
-        public async Task<List<ExchangeCriptoCurrency>> GetExchangesByCurrency(string currencyId)
+        public async Task<List<ExchangeCryptoCurrency>> GetExchangesByCurrency(string currencyId)
         {
             var exchangesJson = await client.GetStringAsync("https://api.coingecko.com/api/v3/coins/" + currencyId + "/tickers?vs_currency=usd&x_cg_demo_api_key=CG-cEKtviV8hwps7SJHcnRMHSgD&include_exchange_logo=true");
-            List<ExchangeCriptoCurrency> exchanges = new List<ExchangeCriptoCurrency>();
+            List<ExchangeCryptoCurrency> exchanges = new List<ExchangeCryptoCurrency>();
             JObject jsonObj = JObject.Parse(exchangesJson);
             JArray tickersArray = (JArray)jsonObj["tickers"];
             foreach (var ticker in tickersArray)
             {
-                ExchangeCriptoCurrency exchange = new ExchangeCriptoCurrency();
+                ExchangeCryptoCurrency exchange = new ExchangeCryptoCurrency();
                 exchange.BaseC = ticker["base"].ToString();
                 exchange.TargetC = ticker["target"].ToString();
                 exchange.MarketName = ticker["market"]["name"].ToString();
@@ -66,14 +66,14 @@ namespace CryptoInfoApp.ApiServices
             return exchanges;
         }
 
-        public async Task<List<CriptoCurrency>> GetCurrenciesByExchange(string exchangeId)
+        public async Task<List<CryptoCurrency>> GetCurrenciesByExchange(string exchangeId)
         {
             var topCurrenciesJson = await client.GetStringAsync("https://api.coincap.io/v2/markets?exchangeId="+exchangeId);
-            List<CriptoCurrency> currencies = new List<CriptoCurrency>();
+            List<CryptoCurrency> currencies = new List<CryptoCurrency>();
             JArray currenciesJArray = JArray.Parse(topCurrenciesJson);
             foreach (var item in currenciesJArray)
             {
-                CriptoCurrency curCurrency = new CriptoCurrency();
+                CryptoCurrency curCurrency = new CryptoCurrency();
                 curCurrency.Id = item["id"].ToString();
                 curCurrency.CurrencySymbol = item["symbol"].ToString();
                 curCurrency.Name = item["name"].ToString();

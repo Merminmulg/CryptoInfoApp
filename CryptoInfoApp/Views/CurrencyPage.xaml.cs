@@ -22,7 +22,7 @@ namespace CryptoInfoApp.Views
     /// </summary>
     public partial class CurrencyPage : Page
     {
-        public CurrencyPage(CriptoCurrency currency, ICommand navigationCommand)
+        public CurrencyPage(CryptoCurrency currency, ICommand navigationCommand)
         {
             DataContext = new CurrencyViewModel(currency, navigationCommand);
             InitializeComponent();

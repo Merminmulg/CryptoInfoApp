@@ -22,14 +22,19 @@ namespace CryptoInfoApp.ModelViews
     internal partial class MainPageViewModel : ObservableObject
     {
         public ICommand NavigateToCurrencyInfoCommand { get; }
+        public ICommand NavigateToConverterCommand { get; }
+
+        [ObservableProperty]
+        private string _currencyFilter;
 
         private readonly ApiService apiService = new();
 
         [ObservableProperty]
-        private ObservableCollection<CriptoCurrency>? _currencies;
+        private ObservableCollection<CryptoCurrency>? _currencies;
 
-        public MainPageViewModel(ICommand navigateToCurrencyInfoCommand)
+        public MainPageViewModel(ICommand navigateToCurrencyInfoCommand, ICommand navigateToConverterCommand)
         {
+            NavigateToConverterCommand = navigateToConverterCommand;
             NavigateToCurrencyInfoCommand = navigateToCurrencyInfoCommand;
             RefreshChart();
         }
@@ -37,7 +42,17 @@ namespace CryptoInfoApp.ModelViews
         [RelayCommand()]
         public async void RefreshChart()
         {
-            Currencies = new ObservableCollection<CriptoCurrency>(await apiService.GetTopCurrenciesAsync());
+            List<CryptoCurrency> temp;
+            if (String.IsNullOrEmpty(CurrencyFilter))
+            {
+                Currencies = new ObservableCollection<CryptoCurrency>(await apiService.GetTopCurrenciesAsync());
+            }
+            else
+            {
+                temp = (await apiService.GetTopCurrenciesAsync()).Where(x => x.Id.Contains(CurrencyFilter.ToLower()) || x.Name.Contains(CurrencyFilter.ToLower())).ToList();
+                Currencies = new ObservableCollection<CryptoCurrency>(temp);
+            }
         }
+
     }
 }

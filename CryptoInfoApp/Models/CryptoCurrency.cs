@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoInfoApp.Models
 {
-    public class CriptoCurrency
+    public class CryptoCurrency
     {
         public string Id { get; set; } = string.Empty;
         public string? Name { get; set; }
