@@ -1,4 +1,7 @@
-﻿using CryptoInfoApp.ModelViews;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using CryptoInfoApp.ModelViews;
+using CryptoInfoApp.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

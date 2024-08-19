@@ -15,6 +15,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/SmallButton.xaml"/>
                 <ResourceDictionary Source="../Styles/ViewListStyle.xaml"/>
+                <ResourceDictionary Source="../Styles/ComboBoxBaseStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -27,15 +28,27 @@
         <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/exitIcon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="30"/>-->
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"> 
             <Button Command="{Binding RefreshChartCommand}" Style="{StaticResource SmallButton}" 
-                    Background="#FF41355D" Content="Update" 
+                    Background="#FF41355D" Content="{DynamicResource b_update}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
                     Width="200"/>
             <Button Command="{Binding NavigateToConverterCommand}" CommandParameter="{Binding Currencies}"
                     Style="{StaticResource SmallButton}" 
-                    Background="#FF41355D" Content="Converter" 
+                    Background="#FF41355D" Content="{DynamicResource b_converter}" 
                     HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
-                    Width="200"/>
+                    Width="Auto"/>
             <TextBox Text="{Binding CurrencyFilter}" FontSize="26" FontFamily="Bahnschrift Condensed" VerticalContentAlignment="Center" Width="260" Height="40"/>
+            <ComboBox ItemsSource="{Binding Languages}" 
+                      SelectedItem="{Binding SelectedLanguage}"
+                      Width="50" Height="50" Margin="20 0" 
+                      Background="#FF151515" BorderThickness="0">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" FontSize="14" Foreground="#FFB8B8B9"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </WrapPanel>
         <!--<Button Style="{StaticResource SmallButton}" Tag="../Icons/backArrow.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30"/>-->
         <!--<ComboBox 
@@ -58,51 +71,51 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="160"/>
-                            <ColumnDefinition Width="170"/>
-                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="70"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="{Binding Image}" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="80" Height="80"/>
+                        <Image Source="{Binding Image}" Grid.Column="0" Grid.RowSpan="2" Width="80" Height="80"/>
 
 
-                        <TextBlock Text="{Binding Name}" Margin="10 0 0 0" TextWrapping="Wrap" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Row="0"/>
-                        <TextBlock Text="{Binding CurrencySymbol}" Margin="10 0 0 0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Name}" Margin="10 0 0 0" TextWrapping="Wrap" Grid.Column="1" VerticalAlignment="Center" Grid.Row="0"/>
+                        <TextBlock Text="{Binding CurrencySymbol}" Margin="10 0 0 0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
 
                         <WrapPanel Grid.Column="3" Margin="0 10 0 0">
-                            <TextBlock Text="Price: " VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding CurrentPrice, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{DynamicResource m_price}" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding CurrentPrice, StringFormat=N3}"/>
+                            <TextBlock Text="$"/>
                         </WrapPanel>
 
                         <WrapPanel Grid.Column="4" Grid.Row="0" Margin="10 10 0 0">
-                            <TextBlock Text="Market Cap Rank : " Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding MarketCapRank}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{DynamicResource m_market_cup_rank}" Grid.Column="4" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding MarketCapRank}" Grid.Column="4"/>
                         </WrapPanel>
 
                         <WrapPanel Grid.Column="4" Grid.Row="1" Margin="10 10 0 0">
-                            <TextBlock Text="Market Cap : " Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding MarketCap, StringFormat=N2}" Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{DynamicResource m_market_cup}" Grid.Column="4" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding MarketCap, StringFormat=N2}" Grid.Column="4"/>
+                            <TextBlock Text="$"/>
                         </WrapPanel>
 
                         
-                        <WrapPanel Grid.Column="5" Margin="0 10 0 0" HorizontalAlignment="Center">
-                            <Label Content="Change 24h:" Foreground="#FFD0CECE" Grid.Column="5"/>
-                            <TextBlock Text="{Binding PriceChange24h, StringFormat=N3}" Grid.Column="5" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <WrapPanel Grid.Column="5" Margin="0 10 0 0">
+                            <Label Content="{DynamicResource m_change24h}" Foreground="#FFD0CECE"/>
+                            <TextBlock Text="{Binding PriceChange24h, StringFormat=N3}" VerticalAlignment="Center"/>
+                            <TextBlock Text="$" VerticalAlignment="Center"/>
                         </WrapPanel>
-                        <WrapPanel Grid.Column="5" Grid.Row="1" Margin="0 10 0 0" HorizontalAlignment="Center">
-                            <Label Content="Change 24h:" Foreground="#FFD0CECE"/>
-                            <TextBlock Text="{Binding PriceChangePercantage24h, StringFormat=N3}" Grid.Column="5" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                            <TextBlock Text="%" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <WrapPanel Grid.Column="5" Grid.Row="1" Margin="0 10 0 0">
+                            <Label Content="{DynamicResource m_change24h}" Foreground="#FFD0CECE"/>
+                            <TextBlock Text="{Binding PriceChangePercantage24h, StringFormat=N3}" VerticalAlignment="Center"/>
+                            <TextBlock Text="%" VerticalAlignment="Center"/>
                         </WrapPanel>
                         <Button Command="{Binding DataContext.NavigateToCurrencyInfoCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
                                 CommandParameter="{Binding}"

@@ -24,7 +24,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="160"/>
-            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="160"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -34,20 +34,19 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 0">
-            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}" Content="BACK" FontSize="20" Width="80" Background="#FF41355D"/>
+            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" FontSize="20" Width="80" Height="40" Background="#FF41355D"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <ComboBox
                 ItemsSource="{Binding Currencies}"
                 Grid.Row="1" Width="160" Height="40" FontSize="16"
-                Background="#FF151515" BorderThickness="0" Foreground="#FF151515"
-                SelectedItem="{Binding BaseCurrency}" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+                Background="#FF151515" BorderThickness="0"
+                SelectedItem="{Binding BaseCurrency}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Hidden" Orientation="Horizontal" Width="140">
+                        <StackPanel Orientation="Horizontal" Width="140">
                             <Image Source="{Binding Image}" Height="30" Width="30"/>
                             <TextBlock Margin="10 0" Text="{Binding Name}" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="#FFB8B8B9" Width="100"/>
-                            <ScrollViewer VerticalScrollBarVisibility="Hidden"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
@@ -56,7 +55,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource SmallButton}" Command="{Binding ConvertCurrenciesCommand}" Content="Convert" FontSize="20" Width="100" Height="35" Background="#FF41355D"/>
+            <Button Style="{StaticResource SmallButton}" Command="{Binding ConvertCurrenciesCommand}" Content="{DynamicResource b_convert}" FontSize="20" Width="Auto" Height="35" Background="#FF41355D"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="3">
@@ -94,7 +93,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="160"/>
                             <ColumnDefinition Width="400"/>
                             <ColumnDefinition Width="*"/>
@@ -102,42 +101,39 @@
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding MarketLogo}" Width="60" Height="60" Grid.RowSpan="3" HorizontalAlignment="Center"/>
                         <TextBlock TextWrapping="Wrap" Grid.Column="1" Text="{Binding MarketName}"/>
-                        <TextBlock Foreground="{Binding TrustedScore}" Grid.Column="1" Grid.Row="2" Text="Trust"/>
+                        <TextBlock Foreground="{Binding TrustedScore}" Grid.Column="1" Grid.Row="2" Text="{DynamicResource i_trust}"/>
                         <WrapPanel Grid.Column="2" Grid.Row="2">
                             <TextBlock Text="{Binding BaseC}"/>
                             <TextBlock Text=" x "/>
                             <TextBlock Text="{Binding TargetC}"/>
                         </WrapPanel>
-                        <WrapPanel VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2">
-                            <TextBlock Text="Last: "/>
+                        <WrapPanel Grid.Column="2">
+                            <TextBlock Text="{DynamicResource i_last}" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding LastPrice}"/>
                         </WrapPanel>
 
-                        <WrapPanel VerticalAlignment="Bottom" Margin="10 0" Grid.Row="0" Grid.Column="3">
-                            <TextBlock Text="Last BTC: "/>
+                        <WrapPanel Margin="10 0" Grid.RowSpan="3" Grid.Column="3">
+                            <TextBlock Text="{DynamicResource i_last_btc}" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding LastPriceBtc, StringFormat=N6}"/>
-                        </WrapPanel>
-                        <WrapPanel Margin="10 0" Grid.Row="1" Grid.Column="3">
-                            <TextBlock Text="Last ETH: "/>
+                            <TextBlock Text="{DynamicResource i_last_eth}" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding LastPriceEth, StringFormat=N4}"/>
+                            <TextBlock Text="{DynamicResource i_last_usd}" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding LastPriceUsd, StringFormat=N2}"/>
                         </WrapPanel>
-                        <WrapPanel Margin="10 0" Grid.Row="2" Grid.Column="3">
-                            <TextBlock Text="Last USD: "/>
-                            <TextBlock Text="{Binding LastPriceUsd, StringFormat=N3}"/>
-                        </WrapPanel>
+                        
                         <WrapPanel Grid.Column="4">
-                            <TextBlock Text="Volume: "/>
+                            <TextBlock Text="{DynamicResource i_volume}" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding Volume}"/>
                         </WrapPanel>
 
                         <!--Button redirect to exchange website-->
                         <Button 
-                     Command="{Binding DataContext.OpenExchangeWebCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
-                     CommandParameter="{Binding TradeUrl}"
-                     Style="{StaticResource SmallButton}"
-                     Content="Trade" Grid.Column="6" Grid.RowSpan="3"
-                     Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
-                     FontSize="20" Background="#FF41355D"/>
+                Command="{Binding DataContext.OpenExchangeWebCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                CommandParameter="{Binding TradeUrl}"
+                Style="{StaticResource SmallButton}"
+                Content="{DynamicResource b_buy}" Grid.Column="6" Grid.RowSpan="3"
+                Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
+                FontSize="20" Background="#FF41355D"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

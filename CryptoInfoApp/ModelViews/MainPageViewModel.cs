@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CryptoInfoApp.ApiServices;
 using CryptoInfoApp.Models;
+using CryptoInfoApp.Utilities;
 using CryptoInfoApp.Views;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,15 @@ namespace CryptoInfoApp.ModelViews
 {
     internal partial class MainPageViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private string[] _languages =
+{
+            "ru-RU", "en-US", "ua-UA"
+        };
+        
+        [ObservableProperty]
+        private string _selectedLanguage = "en-US";
+
         public ICommand NavigateToCurrencyInfoCommand { get; }
         public ICommand NavigateToConverterCommand { get; }
 
@@ -36,7 +46,16 @@ namespace CryptoInfoApp.ModelViews
         {
             NavigateToConverterCommand = navigateToConverterCommand;
             NavigateToCurrencyInfoCommand = navigateToCurrencyInfoCommand;
+            this.PropertyChanged += OnPropertyChanged;
             RefreshChart();
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedLanguage))
+            {
+                ChangeLanguage();
+            }
         }
 
         [RelayCommand()]
@@ -54,5 +73,14 @@ namespace CryptoInfoApp.ModelViews
             }
         }
 
+        public void ChangeLanguage()
+        {
+            AppResourcesController.ChangeLanguage(SelectedLanguage);
+        }
+
+        public void ChangeTheme()
+        {
+
+        }
     }
 }
