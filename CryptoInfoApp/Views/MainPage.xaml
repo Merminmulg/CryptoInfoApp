@@ -27,14 +27,17 @@
         </Grid.RowDefinitions>
         <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
             <Button Command="{Binding RefreshChartCommand}" Style="{StaticResource SmallButton}" 
-                    Background="{DynamicResource buttonBackground}" Content="{DynamicResource b_update}" 
-                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
-                    Width="200"/>
+                    Background="{DynamicResource buttonBackground}"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0" Width="Auto">
+                <TextBlock Margin="10 0" Text="{DynamicResource b_update}"/>
+            </Button>
             <Button Command="{Binding NavigateToConverterCommand}" CommandParameter="{Binding Currencies}"
                     Style="{StaticResource SmallButton}" 
-                    Background="{DynamicResource buttonBackground}" Content="{DynamicResource b_converter}" 
+                    Background="{DynamicResource buttonBackground}"
                     HorizontalAlignment="Center" VerticalAlignment="Top" Margin="30 0"
-                    Width="Auto"/>
+                    Width="Auto">
+                <TextBlock Margin="10 0" Text="{DynamicResource b_converter}"/>
+            </Button>
             <TextBox Text="{Binding CurrencyFilter}" Background="{DynamicResource viewBackground}" 
                      Foreground="{DynamicResource textForeground}" FontSize="26" FontFamily="Bahnschrift Condensed" 
                      VerticalContentAlignment="Center" Width="260" Height="40"/>
@@ -79,15 +82,15 @@
                             <ColumnDefinition Width="70"/>
                             <ColumnDefinition Width="130"/>
                             <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="60"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Image Source="{Binding Image}" Grid.Column="0" Grid.RowSpan="2" Width="80" Height="80"/>
+                        <Image Margin="10 0" Source="{Binding Image}" Grid.Column="0" Grid.RowSpan="2" Width="Auto" Height="Auto"/>
 
 
                         <TextBlock Text="{Binding Name}" Margin="10 0 0 0" TextWrapping="Wrap" Grid.Column="1" VerticalAlignment="Center" Grid.Row="0"/>

@@ -34,8 +34,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 20 0 0">
-            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" 
-                    FontSize="20" Width="80" Height="40" Background="{DynamicResource buttonBackground}"/>
+            <Button Style="{StaticResource SmallButton}" Command="{Binding GoBackCommand}"
+                    FontSize="20" Width="Auto" Height="40" Background="{DynamicResource buttonBackground}">
+                <TextBlock Margin="10 0" Text="{DynamicResource b_back}"/>
+            </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1">
             <ComboBox
@@ -60,8 +62,10 @@
 
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Style="{StaticResource SmallButton}" 
-                    Command="{Binding ConvertCurrenciesCommand}" Content="{DynamicResource b_convert}" 
-                    FontSize="20" Width="Auto" Height="35" Background="{DynamicResource buttonBackground}"/>
+                    Command="{Binding ConvertCurrenciesCommand}"
+                    FontSize="20" Width="Auto" Height="35" Background="{DynamicResource buttonBackground}">
+                <TextBlock Margin="10 0" Text="{DynamicResource b_convert}"/>
+            </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="3">
@@ -136,12 +140,13 @@
 
                         <!--Button redirect to exchange website-->
                         <Button 
-                Command="{Binding DataContext.OpenExchangeWebCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
-                CommandParameter="{Binding TradeUrl}"
-                Style="{StaticResource SmallButton}"
-                Content="{DynamicResource b_buy}" Grid.Column="6" Grid.RowSpan="3"
-                Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
-                FontSize="20" Background="{DynamicResource buttonBackground}"/>
+                            Command="{Binding DataContext.OpenExchangeWebCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                            CommandParameter="{Binding TradeUrl}"
+                            Style="{StaticResource SmallButton}" Grid.Column="6" Grid.RowSpan="3"
+                            Width="100" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="20" Background="{DynamicResource buttonBackground}">
+                            <TextBlock Margin="10 0" Text="{DynamicResource b_buy}"/>
+                        </Button>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
