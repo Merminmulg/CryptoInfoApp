@@ -27,14 +27,10 @@ Additionally, I have implemented a cryptocurrency converter that automatically f
 
 ## Visual Demonstration
 ### Dark Theme
-![image](https://github.com/user-attachments/assets/dad6e5a0-747e-4431-9742-2feeda5beb21)
+![image](https://github.com/user-attachments/assets/73a84fbb-1617-4402-a37d-3cd1453cad16)
 ### Light Theme
-![image](https://github.com/user-attachments/assets/2894c85e-66b0-4464-9be1-13e4a3b4aa39)
+![image](https://github.com/user-attachments/assets/864fffba-7d90-4034-aa98-1de0b204d55b)
 ### Currency Info Page
-![image](https://github.com/user-attachments/assets/e8a6843b-c2a6-4258-bea7-466d2578edab)
+![image](https://github.com/user-attachments/assets/caab6c7c-aee7-4955-9231-bab9cf6296ad)
 ### Conversion Page
-![image](https://github.com/user-attachments/assets/7bac551c-977a-4823-8b56-09a3747284c5)
-
-
-
-
+![image](https://github.com/user-attachments/assets/df4ab24d-b83f-417e-8cf5-fc17f35c5148)
