@@ -17,13 +17,13 @@ namespace CryptoInfoApp.ModelViews
     internal partial class ConverterViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<CryptoCurrency> _currencies;
+        private ObservableCollection<Cryptocurrency> _currencies;
 
         [ObservableProperty]
-        private CryptoCurrency _targetCurrency;
+        private Cryptocurrency _targetCurrency;
         
         [ObservableProperty]
-        private CryptoCurrency _baseCurrency;
+        private Cryptocurrency _baseCurrency;
 
         [ObservableProperty]
         private ObservableCollection<ExchangeCryptoCurrency> _cryptoExchanges;
@@ -38,9 +38,9 @@ namespace CryptoInfoApp.ModelViews
 
         public ICommand GoBackCommand { get; }
 
-        public ConverterViewModel(List<CryptoCurrency> currencies, ICommand GoBack) 
+        public ConverterViewModel(List<Cryptocurrency> currencies, ICommand GoBack) 
         {
-            Currencies = new ObservableCollection<CryptoCurrency>(currencies);
+            Currencies = new ObservableCollection<Cryptocurrency>(currencies);
             GoBackCommand = GoBack;
         }
 

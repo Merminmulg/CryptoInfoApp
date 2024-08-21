@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CryptoInfoApp.Views"
       xmlns:mv="clr-namespace:CryptoInfoApp.ModelViews"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
       mc:Ignorable="d" 
       d:DataContext="{d:DesignInstance Type=mv:CurrencyViewModel}"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -29,7 +30,7 @@
                     Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" 
                     FontSize="20" Width="80" Background="{DynamicResource buttonBackground}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" TextBlock.FontSize="20" 
+        <StackPanel Grid.Row="1" TextBlock.FontSize="20"
                     TextBlock.Foreground="{DynamicResource textForeground}" TextBlock.FontFamily="Bahnschrift Condensed">
             <Grid>
                 <Grid.RowDefinitions>
@@ -39,18 +40,26 @@
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding Currency.Image}" Margin="10" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="90"/>
+                    <lvc:CartesianChart Margin="0 -50 0 0" Height="250" Grid.Column="1" Series="{Binding Series}" XAxes="{Binding XAxes}"></lvc:CartesianChart>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding Currency.Image}" Margin="10" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="90"/>
 
 
                     <TextBlock Text="{Binding Currency.Name}" Margin="5" FontSize="24" TextWrapping="Wrap" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -62,27 +71,28 @@
                         <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </WrapPanel>
 
-                    <WrapPanel Grid.Column="4" Grid.Row="0" Margin="10 10 0 0">
+                    <WrapPanel Grid.Column="2" Grid.Row="0" Margin="10 10 0 0">
                         <TextBlock Text="{DynamicResource m_market_cup_rank}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                         <TextBlock Text="{Binding Currency.MarketCapRank}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </WrapPanel>
 
-                    <WrapPanel Grid.Column="4" Grid.Row="1" Margin="10 10 0 0">
+                    <WrapPanel Grid.Column="2" Grid.Row="1" Margin="10 10 0 0">
                         <TextBlock Text="{DynamicResource m_market_cup}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                         <TextBlock Text="{Binding Currency.MarketCap, StringFormat=N2}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </WrapPanel>
 
-                    <WrapPanel Grid.Column="5" Margin="20 10 0 0" HorizontalAlignment="Center">
+                    <WrapPanel Grid.Column="3" Margin="20 10 0 0" HorizontalAlignment="Center">
                         <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                         <TextBlock Text="{Binding Currency.PriceChange24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </WrapPanel>
-                    <WrapPanel Grid.Column="5" Grid.Row="1" Margin="20 10 0 0" HorizontalAlignment="Center">
+                    <WrapPanel Grid.Column="3" Grid.Row="1" Margin="20 10 0 0" HorizontalAlignment="Center">
                         <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                         <TextBlock Text="{Binding Currency.PriceChangePercantage24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Text="%" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                     </WrapPanel>
+                    </Grid>
                 </Grid>
                 <Grid Grid.Row="1">
                     <ListView ItemsSource="{Binding CryptoExchanges}" ScrollViewer.CanContentScroll="True"

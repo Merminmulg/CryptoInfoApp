@@ -16,14 +16,32 @@ namespace CryptoInfoApp.ApiServices
     {
         private readonly HttpClient client = new HttpClient();
 
-        public async Task<List<CryptoCurrency>> GetTopCurrenciesAsync(string locale = "en", string vsCurrency = "usd")
+        string locale = "en";
+
+        public void SetLocale(string locale)
         {
-            var topCurrenciesJson = await client.GetStringAsync("https://api.coingecko.com/api/v3/coins/markets?vs_currency="+vsCurrency+"&x_cg_demo_api_key=CG-cEKtviV8hwps7SJHcnRMHSgD&locale="+locale);
-            List<CryptoCurrency> currencies = new List<CryptoCurrency>();
+            switch (locale)
+            {
+                case "en-US":
+                    this.locale = "en";
+                    break;
+                case "ru-RU":
+                    this.locale = "ru";
+                    break;
+                default: 
+                    this.locale = "en";
+                    break;
+            }
+        }
+
+        public async Task<List<Cryptocurrency>> GetTopCurrenciesAsync(string vsCurrency = "usd")
+        {
+            var topCurrenciesJson = await client.GetStringAsync("https://api.coingecko.com/api/v3/coins/markets?vs_currency="+vsCurrency+ "&x_cg_demo_api_key=CG-cEKtviV8hwps7SJHcnRMHSgD&sparkline=true&locale=" + locale);
+            List<Cryptocurrency> currencies = new List<Cryptocurrency>();
             JArray currenciesJArray = JArray.Parse(topCurrenciesJson);
             foreach (var item in currenciesJArray)
             {
-                CryptoCurrency curCurrency = new CryptoCurrency();
+                Cryptocurrency curCurrency = new Cryptocurrency();
                 curCurrency.Id = item["id"].ToString();
                 curCurrency.CurrencySymbol = item["symbol"].ToString();
                 curCurrency.Name = item["name"].ToString();
@@ -36,6 +54,13 @@ namespace CryptoInfoApp.ApiServices
                 curCurrency.PriceChange24h = (double)item["price_change_24h"];
                 curCurrency.PriceChangePercantage24h = (double)item["price_change_percentage_24h"];
                 curCurrency.Ath = (double)item["ath"];
+                DateTime startTime = DateTime.Now.AddDays(-7);  
+                TimeSpan interval = TimeSpan.FromHours(1);
+                foreach (var spark in item["sparkline_in_7d"]["price"])
+                {
+                    curCurrency.Sparkline.Add(startTime, (double)spark);
+                    startTime = startTime.Add(interval);
+                }
                 currencies.Add(curCurrency);
             }
             return currencies;
@@ -66,14 +91,14 @@ namespace CryptoInfoApp.ApiServices
             return exchanges;
         }
 
-        public async Task<List<CryptoCurrency>> GetCurrenciesByExchange(string exchangeId)
+        public async Task<List<Cryptocurrency>> GetCurrenciesByExchange(string exchangeId)
         {
             var topCurrenciesJson = await client.GetStringAsync("https://api.coincap.io/v2/markets?exchangeId="+exchangeId);
-            List<CryptoCurrency> currencies = new List<CryptoCurrency>();
+            List<Cryptocurrency> currencies = new List<Cryptocurrency>();
             JArray currenciesJArray = JArray.Parse(topCurrenciesJson);
             foreach (var item in currenciesJArray)
             {
-                CryptoCurrency curCurrency = new CryptoCurrency();
+                Cryptocurrency curCurrency = new Cryptocurrency();
                 curCurrency.Id = item["id"].ToString();
                 curCurrency.CurrencySymbol = item["symbol"].ToString();
                 curCurrency.Name = item["name"].ToString();

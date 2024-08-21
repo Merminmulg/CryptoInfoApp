@@ -29,14 +29,14 @@ namespace CryptoInfoApp.ModelViews
         }
 
         [RelayCommand]
-        private void NavigateToCurrency(CryptoCurrency selectedCurrency)
+        private void NavigateToCurrency(Cryptocurrency selectedCurrency)
         {
             _navigationStack.Push(CurrentPage);
             CurrentPage = new CurrencyPage(selectedCurrency, GoBackCommand);
         }
 
         [RelayCommand]
-        private void NavigateToConverter(ObservableCollection<CryptoCurrency> currencies)
+        private void NavigateToConverter(ObservableCollection<Cryptocurrency> currencies)
         {
             _navigationStack.Push(CurrentPage);
             CurrentPage = new ConverterPage(currencies, GoBackCommand);

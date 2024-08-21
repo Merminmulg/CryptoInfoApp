@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoInfoApp.Models
 {
-    public class CryptoCurrency
+    public class Cryptocurrency
     {
         public string Id { get; set; } = string.Empty;
         public string? Name { get; set; }
@@ -20,5 +20,6 @@ namespace CryptoInfoApp.Models
         public double Hight24h { get; set; }
         public double Low24h { get; set; }
         public double Ath {  get; set; }
+        public Dictionary<DateTime, double> Sparkline { get; set; } = new Dictionary<DateTime, double>();
     }
 }

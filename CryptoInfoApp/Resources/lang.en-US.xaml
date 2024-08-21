@@ -3,7 +3,7 @@
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <v:String x:Key="b_back">Back</v:String>
     <v:String x:Key="b_update">Update</v:String>
-    <v:String x:Key="b_converter">Converter</v:String>
+    <v:String x:Key="b_converter">Conversion</v:String>
     <v:String x:Key="b_convert">Convert</v:String>
     <v:String x:Key="tb_language_setting">Language</v:String>
     <v:String x:Key="b_buy">Buy</v:String>

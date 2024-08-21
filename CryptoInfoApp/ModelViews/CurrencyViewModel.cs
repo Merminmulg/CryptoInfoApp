@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using CryptoInfoApp.ApiServices;
 using CryptoInfoApp.Models;
 using CryptoInfoApp.Views;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,25 +15,48 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using LiveChartsCore.Defaults;
 
 namespace CryptoInfoApp.ModelViews
 {
     internal partial class CurrencyViewModel : ObservableObject
     {
         [ObservableProperty]
-        private CryptoCurrency _currency;
+        private Cryptocurrency _currency;
 
         [ObservableProperty]
         private ObservableCollection<ExchangeCryptoCurrency> _cryptoExchanges;
 
         private readonly ApiService apiService = new();
 
+        public Axis[] XAxes { get; set; }
+
+        public ISeries[] Series { get; set; }
+
         public ICommand GoBackCommand { get; }
-        public CurrencyViewModel(CryptoCurrency currency, ICommand goBack)
+        public CurrencyViewModel(Cryptocurrency currency, ICommand goBack)
         {
             Currency = currency;
             GoBackCommand = goBack;
             DataInit(Currency.Id);
+
+            var dtp = new ObservableCollection<DateTimePoint>();
+            foreach (var spark in Currency.Sparkline)
+            {
+                dtp.Add(new DateTimePoint(spark.Key, spark.Value));
+            }
+            Series = new ISeries[]
+            {
+                new ColumnSeries<DateTimePoint>
+                {
+                    Values = dtp
+                }
+            };
+
+            XAxes = new[]
+            {
+                new DateTimeAxis(TimeSpan.FromHours(1), date => date.ToString("MM dd"))
+            };
         }
 
         private async void DataInit(string currencyId)

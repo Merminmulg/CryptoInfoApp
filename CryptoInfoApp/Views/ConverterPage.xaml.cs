@@ -23,7 +23,7 @@ namespace CryptoInfoApp.Views
     /// </summary>
     public partial class ConverterPage : Page
     {
-        public ConverterPage(ObservableCollection<CryptoCurrency> currencies, ICommand command)
+        public ConverterPage(ObservableCollection<Cryptocurrency> currencies, ICommand command)
         {
             DataContext = new ConverterViewModel(currencies.ToList(), command);
             InitializeComponent();

@@ -40,7 +40,7 @@ namespace CryptoInfoApp.ModelViews
         private readonly ApiService apiService = new();
 
         [ObservableProperty]
-        private ObservableCollection<CryptoCurrency>? _currencies;
+        private ObservableCollection<Cryptocurrency>? _currencies;
 
         public MainPageViewModel(ICommand navigateToCurrencyInfoCommand, ICommand navigateToConverterCommand)
         {
@@ -61,20 +61,21 @@ namespace CryptoInfoApp.ModelViews
         [RelayCommand()]
         public async void RefreshChart()
         {
-            List<CryptoCurrency> temp;
+            List<Cryptocurrency> temp;
             if (String.IsNullOrEmpty(CurrencyFilter))
             {
-                Currencies = new ObservableCollection<CryptoCurrency>(await apiService.GetTopCurrenciesAsync());
+                Currencies = new ObservableCollection<Cryptocurrency>(await apiService.GetTopCurrenciesAsync());
             }
             else
             {
                 temp = (await apiService.GetTopCurrenciesAsync()).Where(x => x.Id.Contains(CurrencyFilter.ToLower()) || x.Name.Contains(CurrencyFilter.ToLower())).ToList();
-                Currencies = new ObservableCollection<CryptoCurrency>(temp);
+                Currencies = new ObservableCollection<Cryptocurrency>(temp);
             }
         }
 
         public void ChangeLanguage()
         {
+            apiService.SetLocale(SelectedLanguage);
             AppResourcesController.ChangeLanguage(SelectedLanguage);
         }
 
