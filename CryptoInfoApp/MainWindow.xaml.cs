@@ -1,4 +1,7 @@
-﻿using System.Text;
+﻿using CryptoInfoApp.ApiServices;
+using CryptoInfoApp.ModelViews;
+using CryptoInfoApp.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,6 +21,7 @@ namespace CryptoInfoApp
     {
         public MainWindow()
         {
+            DataContext = new MainViewModel();
             InitializeComponent();
         }
     }
