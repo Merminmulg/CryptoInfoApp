@@ -16,5 +16,8 @@
     <v:String x:Key="i_last_eth">Последняя ETH:</v:String>
     <v:String x:Key="i_last_usd">Последняя USD:</v:String>
     <v:String x:Key="i_volume">Объем:</v:String>
-    <v:String x:Key="i_trust">Доверие:</v:String>
+    <v:String x:Key="i_trust">Доверие</v:String>
+    <v:String x:Key="i_ath">Максимальная:</v:String>
+    <v:String x:Key="i_circulating_supply">Обьем на рынке:</v:String>
+    <v:String x:Key="i_total_supply">Общий обьем:</v:String>
 </ResourceDictionary>

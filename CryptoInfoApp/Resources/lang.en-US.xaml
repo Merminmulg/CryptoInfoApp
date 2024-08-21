@@ -17,5 +17,8 @@
     <v:String x:Key="i_last_usd">Last USD:</v:String>
     <v:String x:Key="i_volume">Volume:</v:String>
     <v:String x:Key="i_trust">Trust</v:String>
+    <v:String x:Key="i_ath">Ath:</v:String>
+    <v:String x:Key="i_circulating_supply">Circulating Supply:</v:String>
+    <v:String x:Key="i_total_supply">Total Supply:</v:String>
 
 </ResourceDictionary>

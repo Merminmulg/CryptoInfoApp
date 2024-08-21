@@ -19,6 +19,9 @@ namespace CryptoInfoApp.Models
         public double PriceChangePercantage24h { get; set; }
         public double Hight24h { get; set; }
         public double Low24h { get; set; }
+        public double CirculatingSupply {  get; set; }
+        public double TotalSupply { get; set; }
+        public double MaxSupply { get; set; }
         public double Ath {  get; set; }
         public Dictionary<DateTime, double> Sparkline { get; set; } = new Dictionary<DateTime, double>();
     }

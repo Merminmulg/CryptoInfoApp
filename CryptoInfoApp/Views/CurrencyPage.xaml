@@ -52,46 +52,60 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="130"/>
+                            <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding Currency.Image}" Margin="10" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="90"/>
 
 
-                    <TextBlock Text="{Binding Currency.Name}" Margin="5" FontSize="24" TextWrapping="Wrap" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Text="{Binding Currency.CurrencySymbol}" Margin="10 0 0 0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Currency.Name}" Margin="0" FontSize="24" TextWrapping="Wrap" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Currency.CurrencySymbol}" Margin="5" Grid.Column="0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
-                    <WrapPanel Grid.Column="1" Margin="10 10 0 0">
-                        <TextBlock Text="{DynamicResource m_price}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
-                        <TextBlock Text="{Binding Currency.CurrentPrice, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    </WrapPanel>
+                        <WrapPanel Grid.Column="1" Margin="10 10 0 0">
+                            <TextBlock Text="{DynamicResource m_price}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.CurrentPrice, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
 
-                    <WrapPanel Grid.Column="2" Grid.Row="0" Margin="10 10 0 0">
-                        <TextBlock Text="{DynamicResource m_market_cup_rank}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
-                        <TextBlock Text="{Binding Currency.MarketCapRank}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    </WrapPanel>
+                        <WrapPanel Grid.Column="2" Grid.Row="0" Margin="10 10 0 0">
+                            <TextBlock Text="{DynamicResource m_market_cup_rank}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.MarketCapRank}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
 
-                    <WrapPanel Grid.Column="2" Grid.Row="1" Margin="10 10 0 0">
-                        <TextBlock Text="{DynamicResource m_market_cup}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
-                        <TextBlock Text="{Binding Currency.MarketCap, StringFormat=N2}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    </WrapPanel>
+                        <WrapPanel Grid.Column="2" Grid.Row="1" Margin="10 0 0 0">
+                            <TextBlock Text="{DynamicResource m_market_cup}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.MarketCap, StringFormat=N2}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
 
-                    <WrapPanel Grid.Column="3" Margin="20 10 0 0" HorizontalAlignment="Center">
-                        <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
-                        <TextBlock Text="{Binding Currency.PriceChange24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    </WrapPanel>
-                    <WrapPanel Grid.Column="3" Grid.Row="1" Margin="20 10 0 0" HorizontalAlignment="Center">
-                        <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
-                        <TextBlock Text="{Binding Currency.PriceChangePercantage24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Text="%" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    </WrapPanel>
+                        <WrapPanel Grid.Column="3" Margin="20 10 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.PriceChange24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="3" Grid.Row="1" Margin="20 0 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{DynamicResource m_change24h}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.PriceChangePercantage24h, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="%" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="2" Grid.Row="2" Margin="10 0 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{DynamicResource i_circulating_supply}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.CirculatingSupply, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="2" Grid.Row="3" Margin="10 0 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{DynamicResource i_total_supply}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.TotalSupply, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
+                        <WrapPanel Grid.Column="1" Grid.Row="1" Margin="10 0 0 0" HorizontalAlignment="Left">
+                            <TextBlock Text="{DynamicResource i_ath}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Currency.Ath, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="$" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </WrapPanel>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="1">

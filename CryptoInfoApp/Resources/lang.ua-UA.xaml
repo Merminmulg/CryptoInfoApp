@@ -17,4 +17,7 @@
     <v:String x:Key="i_last_usd">Остання USD:</v:String>
     <v:String x:Key="i_volume">Об'єм:</v:String>
     <v:String x:Key="i_trust">Довіра</v:String>
+    <v:String x:Key="i_ath">Вища ціна:</v:String>
+    <v:String x:Key="i_circulating_supply">Кількість у ринку:</v:String>
+    <v:String x:Key="i_total_supply">Загальна кількість:</v:String>
 </ResourceDictionary>

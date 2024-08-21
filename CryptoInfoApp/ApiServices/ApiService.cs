@@ -53,6 +53,8 @@ namespace CryptoInfoApp.ApiServices
                 curCurrency.Low24h = (double)item["low_24h"];
                 curCurrency.PriceChange24h = (double)item["price_change_24h"];
                 curCurrency.PriceChangePercantage24h = (double)item["price_change_percentage_24h"];
+                curCurrency.CirculatingSupply = (double)item["circulating_supply"];
+                curCurrency.TotalSupply = (double)item["total_supply"];
                 curCurrency.Ath = (double)item["ath"];
                 DateTime startTime = DateTime.Now.AddDays(-7);  
                 TimeSpan interval = TimeSpan.FromHours(1);
