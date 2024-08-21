@@ -22,13 +22,15 @@
 
     <Grid Background="{DynamicResource viewBackground}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Left" Margin="50 20" VerticalAlignment="Center">
             <Button Style="{StaticResource SmallButton}" 
-                    Command="{Binding GoBackCommand}" Content="{DynamicResource b_back}" 
-                    FontSize="20" Width="80" Background="{DynamicResource buttonBackground}"/>
+                    Command="{Binding GoBackCommand}"
+                    FontSize="20" Width="Auto" Height="40" Background="{DynamicResource buttonBackground}">
+                <TextBlock Margin="5 0" Text="{DynamicResource b_back}"/>
+            </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" TextBlock.FontSize="20"
                     TextBlock.Foreground="{DynamicResource textForeground}" TextBlock.FontFamily="Bahnschrift Condensed">
@@ -97,7 +99,7 @@
                             <TextBlock Text="{DynamicResource i_circulating_supply}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding Currency.CirculatingSupply, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </WrapPanel>
-                        <WrapPanel Grid.Column="2" Grid.Row="3" Margin="10 0 0 0" HorizontalAlignment="Left">
+                        <WrapPanel Grid.Column="3" Grid.Row="2" Margin="10 0 0 10" HorizontalAlignment="Left">
                             <TextBlock Text="{DynamicResource i_total_supply}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 5 0"/>
                             <TextBlock Text="{Binding Currency.TotalSupply, StringFormat=N3}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         </WrapPanel>
